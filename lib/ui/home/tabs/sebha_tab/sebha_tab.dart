@@ -12,7 +12,7 @@ class SebhaTab extends StatefulWidget {
 
 class _SebhaTabState extends State<SebhaTab> {
   double rotation = 0;
-  List<String> azkar = ['سبحان الله', 'الحمد لله', ' الله أكبر'];
+  List<String> azkarList = ['سبحان الله', 'الحمد لله', ' الله أكبر'];
   int index = 0 ;
   int azkarCounter = 0;
 
@@ -20,7 +20,7 @@ class _SebhaTabState extends State<SebhaTab> {
 
   @override
   Widget build(BuildContext context) {
-    late String azarTextUpdate = azkar[index];
+    late String azarTextUpdate = azkarList[index];
     return Expanded(
       child: Column(
         mainAxisSize: .min,
@@ -67,7 +67,7 @@ class _SebhaTabState extends State<SebhaTab> {
      azkarCounter = 0 ;
      index++;
    }
-  if (index == azkar.length  ){
+  if (index == azkarList.length  ){
 
      index = 0 ;
   }
