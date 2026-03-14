@@ -7,7 +7,9 @@ import 'package:islami_app/ui/utils/app_images.dart';
 import 'package:islami_app/ui/utils/app_routes.dart';
 import 'package:islami_app/ui/utils/app_styles.dart';
 import 'package:islami_app/models/sura_list.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../../provider/moct_recent_provider.dart';
 import '../widget/quran_content.dart';
 
 class QuranDetails extends StatefulWidget {
@@ -19,6 +21,7 @@ class QuranDetails extends StatefulWidget {
 
 class _QuranDetailsLineState extends State<QuranDetails> {
   String verses = '';
+  late MostRecentProvider mostRecentProvider ;
   // int pageIndex = 0 ; INDEXED STACK VARIABLE
   List<String> versesContainer = [];
   PageController pageControl = PageController();
@@ -29,6 +32,7 @@ class _QuranDetailsLineState extends State<QuranDetails> {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     var index = ModalRoute.of(context)?.settings.arguments as int;
+    mostRecentProvider = Provider.of<MostRecentProvider>(context);
 
     if (verses.isEmpty) {
       loadQuranFileLines(index);
@@ -193,5 +197,12 @@ class _QuranDetailsLineState extends State<QuranDetails> {
     setState(() {
       versesContainer = lines;
     });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    mostRecentProvider.getMostRecentList();
   }
 }
