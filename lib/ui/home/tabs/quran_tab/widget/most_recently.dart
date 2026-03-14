@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/models/sura_list.dart';
+import 'package:islami_app/provider/moct_recent_provider.dart';
 import 'package:islami_app/ui/home/tabs/quran_tab/shared_pref_utiles.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../utils/app_color.dart';
 import '../../../../utils/app_images.dart';
@@ -13,24 +15,27 @@ class MostRecently extends StatefulWidget {
 }
 
 class _MostRecentlyState extends State<MostRecently> {
-  List<int> mostRecentList = [];
+  late MostRecentProvider mostRecentProvider ;
   @override
   void initState() {
     super.initState();
-    readMostRecentList();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      mostRecentProvider.getMostRecentList();
+    },);
   }
 
-  void readMostRecentList() async {
-    mostRecentList = await getMostRecentList();
-    setState(() {});
-  }
+  // void readMostRecentList() async {
+  //   mostRecentList = await getMostRecentList();
+  //   setState(() {});
+  // }
 
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
+    mostRecentProvider = Provider.of<MostRecentProvider>(context);
     return Visibility(
-      visible: mostRecentList.isNotEmpty,
+      visible: mostRecentProvider.mostRecentList.isNotEmpty,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: height * 0.020,
@@ -47,7 +52,7 @@ class _MostRecentlyState extends State<MostRecently> {
                 return InkWell(
                   onTap: () => Navigator.of(context).pushNamed(
                     AppRoutes.QuranDetailsRouteName,
-                    arguments: mostRecentList[index],
+                    arguments: mostRecentProvider.mostRecentList[index],
                   ),
 
                   child: Container(
@@ -67,15 +72,15 @@ class _MostRecentlyState extends State<MostRecently> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              SuraList.englishQuranList[mostRecentList[index]],
+                              SuraList.englishQuranList[mostRecentProvider.mostRecentList[index]],
                               style: buildText(fontSize: 24),
                             ),
                             Text(
-                              SuraList.arabicQuranList[mostRecentList[index]],
+                              SuraList.arabicQuranList[mostRecentProvider.mostRecentList[index]],
                               style: buildText(fontSize: 24),
                             ),
                             Text(
-                              "${SuraList.SuraVerse[mostRecentList[index]]} Verses",
+                              "${SuraList.SuraVerse[mostRecentProvider.mostRecentList[index]]} Verses",
                               style: AppTheme.darkTheme.textTheme.headlineSmall
                                   ?.copyWith(
                                     fontSize: 14,
@@ -92,7 +97,7 @@ class _MostRecentlyState extends State<MostRecently> {
               },
               separatorBuilder: (context, index) =>
                   SizedBox(width: width * 0.02),
-              itemCount: mostRecentList.length,
+              itemCount: mostRecentProvider.mostRecentList.length,
             ),
           ),
         ],
