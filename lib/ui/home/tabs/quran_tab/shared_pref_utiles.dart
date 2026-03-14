@@ -30,16 +30,3 @@ Future<void> saveSuraIndex (int newSuraIndex) async {
 
 }
 
-//Todo : read data,get data => index
-
-Future<List<int>> getMostRecentList  () async {
-  final SharedPreferences prefs = await SharedPreferences.getInstance();
-  //Todo : get list data if empty return empty list
-  List<String> mostRecentListAsString = prefs.getStringList(sharedPrefKeys.mostRecentKeys) ?? [];
-//Todo : turn list data from type string to type integer using map method
-  List<int> mostRecentListAsInt = mostRecentListAsString.map((listElement) => int.parse(listElement),).toList();
-
-  return mostRecentListAsInt ;
-  // return mostRecentListAsInt.reversed.toList() ;
-
-}
