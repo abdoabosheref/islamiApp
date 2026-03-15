@@ -3,7 +3,8 @@ import 'package:islami_app/ui/home/tabs/hadeth_tab/hadeth_tab.dart';
 import 'package:islami_app/ui/home/tabs/quran_tab/quran_tab.dart';
 import 'package:islami_app/ui/home/tabs/radio_tab/radio_tab.dart';
 import 'package:islami_app/ui/home/tabs/sebha_tab/sebha_tab.dart';
-import 'package:islami_app/ui/home/tabs/statics_tab/statics_tab.dart';
+
+import 'package:islami_app/ui/home/tabs/time_tab/time_tab.dart';
 import 'package:islami_app/ui/utils/app_color.dart';
 import 'package:islami_app/ui/utils/app_icons.dart';
 import 'package:islami_app/ui/utils/app_images.dart';
@@ -26,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
     4 : AppImages.staticsBG,
   };
   List<Widget> navBarTabs = [QuranTab(),HadethTab(),SebhaTab()
-    ,RadioTab(),StaticsTab()];
+    ,RadioTab(),TimeTab()];
 
 
   @override
