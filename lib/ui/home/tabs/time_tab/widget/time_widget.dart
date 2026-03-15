@@ -60,12 +60,12 @@ class TimeWidget extends StatelessWidget {
               ),
               CarouselSlider(
                 options: CarouselOptions(viewportFraction:0.3 ,
-                  enlargeCenterPage: true ,height: height*0.15),
+                  enlargeCenterPage: true ,height: height*0.17),
                 items: [1,2,3,4,5,6].map((index) {
                   return Builder(
                     builder: (BuildContext context) {
                       return Container(
-                          width: width * 0.25,
+                          width: width * 0.28,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               gradient: LinearGradient(colors: [

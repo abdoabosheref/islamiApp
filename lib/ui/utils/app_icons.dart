@@ -13,6 +13,4 @@ abstract class AppIcons {
   static const String volumeOffIcon = "assets/icons/volume_off.png";
   static const String volumeOnIcon = "assets/icons/volume_on.svg";
   static const String timeBackGround = "assets/icons/time_tab_background.svg";
-
-
 }

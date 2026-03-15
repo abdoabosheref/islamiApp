@@ -11,6 +11,8 @@ abstract class AppImages {
   static const String detailsBottomIcon = "assets/images/img_bottom_decoration.png";
   static const String sebihaHead = "assets/images/sibhahead.png";
   static const String sebihaBody = "assets/images/SebhaBody 1.png";
+  static const String morAzkar = "assets/images/Morning Azkar icon.png";
+  static const String eveAzkar = "assets/images/Evening Azkar icon.png";
 
 
 
