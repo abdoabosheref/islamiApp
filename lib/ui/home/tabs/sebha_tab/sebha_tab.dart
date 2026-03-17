@@ -42,7 +42,7 @@ class _SebhaTabState extends State<SebhaTab> {
                   ),
                 ],
               ),
-              InkWell(onTap: () => getRotationValue(),
+              GestureDetector(onTap: () => getRotationValue(),
                 child: AnimatedRotation(
                   turns: rotation,
                   duration: Duration(milliseconds: 500),

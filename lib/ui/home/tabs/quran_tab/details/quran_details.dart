@@ -26,6 +26,7 @@ class _QuranDetailsLineState extends State<QuranDetails> {
   List<String> versesContainer = [];
   PageController pageControl = PageController();
   int currentPageIndex = 0;
+  int isSelected = -1 ;
 
   @override
   Widget build(BuildContext context) {
@@ -157,7 +158,11 @@ class _QuranDetailsLineState extends State<QuranDetails> {
                       )
                     : ListView.separated(
                         itemBuilder: (context, index) {
-                          return QuranContent(
+                          return QuranContent(selected: isSelected,index: index,
+                            onTap: () {
+                              isSelected = index ;
+                              setState(() {});
+                            },
                             content: '${versesContainer[index]},[${index + 1}]',
                           );
                         },
